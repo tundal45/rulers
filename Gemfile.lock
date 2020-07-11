@@ -11,13 +11,15 @@ GEM
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rake (13.0.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  minitest
-  rack-test
+  minitest (~> 5.14)
+  rack-test (~> 1.1)
+  rake (~> 13.0)
   rulers!
 
 BUNDLED WITH
