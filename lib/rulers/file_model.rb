@@ -34,6 +34,26 @@ module Rulers
         files = Dir["db/quotes/*.json"]
         files.map { |f| FileModel.new(f) }
       end
+
+      def self.create(attrs)
+        hash = {
+          "submitter": "",
+          "quote": "",
+          "attribution": ""
+        }
+
+        hash.merge!(attrs)
+
+        files = Dir["db/quotes/*.json"]
+        names = files.map { |f| File.split(f)[-1].to_i }
+        highest = names.max
+        id = highest + 1
+
+        filename = "db/quotes/#{id}.json"
+        File.write(filename, MultiJson.dump(hash))
+
+        FileModel.new(filename)
+      end
     end
   end
 end
